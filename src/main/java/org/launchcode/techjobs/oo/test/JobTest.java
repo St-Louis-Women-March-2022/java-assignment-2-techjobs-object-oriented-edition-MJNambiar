@@ -18,6 +18,7 @@ public class JobTest {
 
 //Order of tests executing with job with constructor first so id=1, so need to use @FixMethodOrder
     //ask if this is the best way in office hours
+    //maybe create a before with objects used to test??
 
     @Test
     public void testJobConstructorSetsAllFields() {
@@ -59,4 +60,23 @@ public class JobTest {
 //        System.out.println("Job2" + job2.getId());
 //        System.out.println("Job3" + job3.getId());
     }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job6 = new Job();
+        String job6String = job6.toString();
+        int endNewLine = job6String.lastIndexOf("\n");
+        assertEquals("\n", job6String.charAt(0));
+        assertEquals("\n", job6String.charAt(endNewLine));
+    }
 }
+//Want to look like this
+//
+//ID:  _______
+//        Name: _______
+//        Employer: _______
+//        Location: _______
+//        Position Type: _______
+//        Core Competency: _______
+//
+//If field empty, should say "Data not available"
