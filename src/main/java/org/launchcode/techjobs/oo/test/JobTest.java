@@ -36,6 +36,7 @@ public class JobTest {
 //        Ask why these are different in office hours?
 
         assertTrue(job1 instanceof Job);
+        assertTrue(job1.getName() instanceof String);
         assertTrue(job1.getEmployer() instanceof Employer);
         assertTrue(job1.getLocation() instanceof Location);
         assertTrue(job1.getPositionType() instanceof PositionType);
@@ -54,8 +55,8 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality() {
-        Job job2 = new Job();
-        Job job3 = new Job();
+        Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(job2.equals(job3));
 //        System.out.println("Job2" + job2.getId());
 //        System.out.println("Job3" + job3.getId());
@@ -66,17 +67,22 @@ public class JobTest {
         Job job6 = new Job();
         String job6String = job6.toString();
         int endNewLine = job6String.lastIndexOf("\n");
-        assertEquals("\n", job6String.charAt(0));
-        assertEquals("\n", job6String.charAt(endNewLine));
+        assertEquals('\n', job6String.charAt(0));
+        assertEquals('\n', job6String.charAt(endNewLine));
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job6 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String job6String = job6.toString();
+        assertEquals("\nID: 6\nName: Product tester\nEmployer: ACME\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Persistence\n", job6.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job6 = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency());
+        assertEquals("\nID: 7\nName: Product tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", job6.toString());
     }
 }
-//Want to look like this
-//
-//ID:  _______
-//        Name: _______
-//        Employer: _______
-//        Location: _______
-//        Position Type: _______
-//        Core Competency: _______
-//
-//If field empty, should say "Data not available"
+

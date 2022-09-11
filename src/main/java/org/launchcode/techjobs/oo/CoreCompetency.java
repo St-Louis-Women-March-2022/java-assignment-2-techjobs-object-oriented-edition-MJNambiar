@@ -22,7 +22,11 @@ public class CoreCompetency {
 
     @Override
     public String toString() {
-        return value;
+        if (this.value == null || this.value == "") {
+            return "Data not available";
+        } else {
+            return value;
+        }
     }
 
     @Override
@@ -44,10 +48,6 @@ public class CoreCompetency {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getValue() {

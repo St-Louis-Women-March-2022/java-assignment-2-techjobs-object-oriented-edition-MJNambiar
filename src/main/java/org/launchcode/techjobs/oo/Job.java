@@ -49,8 +49,32 @@ public class Job {
 
     @Override
     public String toString(){
-        return "\n Name: " + "\n";
+        if (this.name == null || this.name == "") {
+            this.name = "Data not available";
+        }
+
+        return "\nID: " + this.id
+                + "\nName: " + this.name
+                + "\nEmployer: " + this.employer
+                + "\nLocation: " + this.location
+                + "\nPosition Type: " + this.positionType
+                + "\nCore Competency: " + this.coreCompetency
+                + "\n";
     }
+
+    //DO I NEED GETTERS IN ABOVE??
+    //        if (this.employer == null) {
+//            this.employer= getEmployer() = new Employer ("Data not available");
+//        }
+//        if (this.location == null) {
+//            this.location= new Location("Data not available");
+//        }
+//        if (this.positionType == null) {
+//            this.positionType= new PositionType("Data not available");
+//        }
+//        if (this.coreCompetency == null) {
+//            this.coreCompetency= new CoreCompetency("Data not available");
+//        }
 
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID

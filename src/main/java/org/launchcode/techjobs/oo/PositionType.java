@@ -22,7 +22,11 @@ public class PositionType {
 
     @Override
     public String toString() {
-        return value;
+        if (this.value == null || this.value == "") {
+            return "Data not available";
+        } else {
+            return value;
+        }
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two PositionType objects "equal" when
