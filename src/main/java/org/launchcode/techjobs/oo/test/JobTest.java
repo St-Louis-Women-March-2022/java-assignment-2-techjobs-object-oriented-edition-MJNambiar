@@ -16,9 +16,7 @@ import static org.junit.Assert.*;
 @FixMethodOrder (MethodSorters.NAME_ASCENDING)
 public class JobTest {
 
-//Order of tests executing with job with constructor first so id=1, so need to use @FixMethodOrder
-    //ask if this is the best way in office hours
-    //maybe create a before with objects used to test??
+//Order of tests executing with job with constructor first so id=1, so need to use @FixMethodOrder or could have used Before with same object to test each time
 
     @Test
     public void testJobConstructorSetsAllFields() {
@@ -31,9 +29,6 @@ public class JobTest {
         assertEquals("Desert", job1.getLocation().getValue());
         assertEquals("Quality control", job1.getPositionType().getValue());
         assertEquals("Persistence", job1.getCoreCompetency().getValue());
-//        System.out.println(job1.getEmployer());
-//        System.out.println(job1.getEmployer().getValue());
-//        Ask why these are different in office hours?
 
         assertTrue(job1 instanceof Job);
         assertTrue(job1.getName() instanceof String);
@@ -81,7 +76,7 @@ public class JobTest {
 
     @Test
     public void testToStringHandlesEmptyField() {
-        Job job6 = new Job("Product tester", new Employer(), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency());
+        Job job6 = new Job("Product tester", new Employer(""), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency(""));
         assertEquals("\nID: 7\nName: Product tester\nEmployer: Data not available\nLocation: Desert\nPosition Type: Quality control\nCore Competency: Data not available\n", job6.toString());
     }
 }

@@ -14,7 +14,16 @@ public abstract class JobField {
         this();
         this.value = value;
     }
-    // custom methods
+
+    @Override
+    public String toString() {
+        if (this.value == null || this.value == "") {
+            return "Data not available";
+        } else {
+            return value;
+        }
+    }
+
 
     public int getId() {
         return id;
