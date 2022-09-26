@@ -21,7 +21,6 @@ public class JobTest {
     @Test
     public void testJobConstructorSetsAllFields() {
         Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
-//        System.out.println("Job1" + job1.getId());
 
         assertEquals(1, job1.getId(), .001);
         assertEquals("Product tester", job1.getName());
@@ -42,8 +41,6 @@ public class JobTest {
     public void testSettingJobId() {
         Job job4 = new Job();
         Job job5 = new Job();
-//        System.out.println("Job4" + job4.getId());
-//        System.out.println("Job5" + job5.getId());
         assertEquals(4, job4.getId(), .001);
         assertEquals(5, job5.getId(), .001);
     }
@@ -53,8 +50,6 @@ public class JobTest {
         Job job2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(job2.equals(job3));
-//        System.out.println("Job2" + job2.getId());
-//        System.out.println("Job3" + job3.getId());
     }
 
     @Test
